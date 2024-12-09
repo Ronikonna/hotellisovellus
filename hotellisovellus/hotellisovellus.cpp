@@ -195,7 +195,7 @@ int main()
 	std::vector<std::vector<int>> rooms(roomAmount, std::vector<int>(3));
 
 
-	generateRooms(rooms);
+	rooms = generateRooms(rooms);
 
 	//kysytään käyttäjältä mitä hän haluaa tehdä
 	while (true) {
@@ -212,7 +212,7 @@ int main()
 
 		if (choice == 1) {
 
-			bookRooms(rooms);
+			rooms = bookRooms(rooms);
 		}
 		else if (choice == 2) {
 
