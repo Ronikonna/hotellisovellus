@@ -88,69 +88,68 @@ std::vector<std::vector<int>> bookRooms(std::vector<std::vector<int>> rooms) {
 	//tarkistetaan onko huone jo varattu
 	if (rooms[chosenRoom - 1][2] != 0) {
 		std::cout << "Huone on jo varattu" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	}
 		
-	
-	//kysytään käyttäjältä varauksen kesto
-	std::cout << "Varauksen kesto" << std::endl;
-	while (!(std::cin >> bookingDuration)) {
-		std::cout << "Virheellinen syöte" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-
-
-	//jos valittu huone oli yhden hengen huone lasketaan hinta alennuksen ja päivien perusteella
-	if (chosenRoomtype == 1) {
-
-		switch (discount)
-		{
-		case 0:
-			std::cout << "Ei alennusta" << std::endl;
-			bookingPrice = 100 * bookingDuration;
-			break;
-		case 1:
-			std::cout << "10% alennus" << std::endl;
-			bookingPrice = 100 * bookingDuration * 0.9;
-			break;
-		case 2:
-			std::cout << "20% alennus" << std::endl;
-			bookingPrice = 100 * bookingDuration * 0.8;
-			break;
+	else {
+		//kysytään käyttäjältä varauksen kesto
+		std::cout << "Varauksen kesto päivinä" << std::endl;
+		while (!(std::cin >> bookingDuration)) {
+			std::cout << "Virheellinen syöte" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 
-	}
-	//jos valittu huone oli kahden hengen huone lasketaan hinta alennuksen ja päivien perusteella
-	else
-		if (chosenRoomtype == 2)
-		{
+
+		//jos valittu huone oli yhden hengen huone lasketaan hinta alennuksen ja päivien perusteella
+		if (chosenRoomtype == 1) {
+
 			switch (discount)
 			{
 			case 0:
 				std::cout << "Ei alennusta" << std::endl;
-				bookingPrice = 150 * bookingDuration;
+				bookingPrice = 100 * bookingDuration;
 				break;
 			case 1:
 				std::cout << "10% alennus" << std::endl;
-				bookingPrice = 150 * bookingDuration * 0.9;
+				bookingPrice = 100 * bookingDuration * 0.9;
 				break;
 			case 2:
 				std::cout << "20% alennus" << std::endl;
-				bookingPrice = 150 * bookingDuration * 0.8;
+				bookingPrice = 100 * bookingDuration * 0.8;
 				break;
 			}
+
 		}
-	//tulostetaan varauksen hinta
-	std::cout << "Varauksen hinta: " << bookingPrice << std::endl;
-	//varataan huone satunnaisella varausnumerolla
-	rooms[chosenRoom - 1][2] = rand() % 89999 + 10000;
-	//tulostetaan varatun huoneen tiedot
-	std::cout << "Huoneen numero " << rooms[chosenRoom - 1][0] << " Huoneen koko: " << rooms[chosenRoom - 1][1] << " Varausnumero: " << rooms[chosenRoom - 1][2] << std::endl;
+		//jos valittu huone oli kahden hengen huone lasketaan hinta alennuksen ja päivien perusteella
+		else
+			if (chosenRoomtype == 2)
+			{
+				switch (discount)
+				{
+				case 0:
+					std::cout << "Ei alennusta" << std::endl;
+					bookingPrice = 150 * bookingDuration;
+					break;
+				case 1:
+					std::cout << "10% alennus" << std::endl;
+					bookingPrice = 150 * bookingDuration * 0.9;
+					break;
+				case 2:
+					std::cout << "20% alennus" << std::endl;
+					bookingPrice = 150 * bookingDuration * 0.8;
+					break;
+				}
+			}
+		//tulostetaan varauksen hinta
+		std::cout << "Varauksen hinta: " << bookingPrice << std::endl;
+		//varataan huone satunnaisella varausnumerolla
+		rooms[chosenRoom - 1][2] = rand() % 89999 + 10000;
+		//tulostetaan varatun huoneen tiedot
+		std::cout << "Huoneen numero " << rooms[chosenRoom - 1][0] << " Huoneen koko: " << rooms[chosenRoom - 1][1] << " Varausnumero: " << rooms[chosenRoom - 1][2] << std::endl;
+
+	}
 
 	return rooms;
-
 }
 
 void bookingSearch(std::vector<std::vector<int>> rooms) {
