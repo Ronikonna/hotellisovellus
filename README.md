@@ -1,4 +1,4 @@
-5 pisteen työ
+Roni Suvanto 5 pisteen työ
 
 Luo satunnaisesti 40-300 huonetta joka on aina tasalukuinen määrä joista ensinmäinen puoli on yhden ja toinen puoli kahden hengen huoneita.
 
